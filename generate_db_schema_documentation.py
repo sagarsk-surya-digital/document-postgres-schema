@@ -55,7 +55,8 @@ def list_tables():
     table_files = list_of_md_files(PATH_TO_TEMP_FOLDER,FILE_EXTENSION)
     for file_name in table_files:
         table_name = file_name.split(".md")[0]
-        list_of_all_tables.append(table_name.split(f"{INPUT_DATABASE_SCHEMA_NAME}.")[1])
+        if INPUT_DATABASE_SCHEMA_NAME in table_name:
+            list_of_all_tables.append(table_name.split(f"{INPUT_DATABASE_SCHEMA_NAME}.")[1])
     return list_of_all_tables
 
 def filter_table(table):
